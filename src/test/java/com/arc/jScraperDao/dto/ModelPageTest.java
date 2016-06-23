@@ -14,6 +14,17 @@ public class ModelPageTest {
 	private ArrayList<String> mockedList;
 	
 	@Test
+	public void getAndSetPageNumberTest() {
+		ModelPage page = new ModelPage();
+		
+		int testPageNumber = 5;
+		page.setPageNUmber(testPageNumber);
+		int actualPageNumber = page.getPageNumber();
+		
+		assertEquals(testPageNumber, actualPageNumber);
+	}
+	
+	@Test
 	public void getAndSetStartingImageNumberTest() {
 		ModelPage page = new ModelPage();
 		int testStartingImageNumber = 1;
