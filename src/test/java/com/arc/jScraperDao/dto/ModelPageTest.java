@@ -18,7 +18,7 @@ public class ModelPageTest {
 		ModelPage page = new ModelPage();
 		
 		int testPageNumber = 5;
-		page.setPageNUmber(testPageNumber);
+		page.setPageNumber(testPageNumber);
 		int actualPageNumber = page.getPageNumber();
 		
 		assertEquals(testPageNumber, actualPageNumber);

@@ -13,7 +13,7 @@ public class ModelPage {
 		return pageNumber;
 	}
 
-	public void setPageNUmber(int pageNumber) {
+	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
 	
