@@ -3,10 +3,19 @@ package com.arc.jScraperDao.dto;
 import java.util.List;
 
 public class ModelPage {
+	private int pageNumber;
 	private int startingImageNumber;
 	private int lastImageNumber;
 	private List<String> thumbnailsList;
 	private List<String> imagePageLinkList;
+	
+	public int getPageNumber() {
+		return pageNumber;
+	}
+
+	public void setPageNUmber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
 	
 	public int getStartingImageNumber() {
 		return startingImageNumber;
