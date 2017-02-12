@@ -1,9 +1,8 @@
 package com.arc.jScraperDao.dao;
 
-import com.arc.jScraperDao.dto.Model;
+import com.arc.jScraperDao.dto.application.Model;
 
 public interface ModelDao {
-	public int getIdByName(String name);
-	public void saveModel(Model model);
-	public Model getModelByName(String name);
+    void save(Model model);
+    Model load(String name);
 }

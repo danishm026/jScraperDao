@@ -4,13 +4,9 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class FileIO {
-	public static void writeListtoFile(List<String> list, PrintWriter writer) {
-		try {
-			for (String line : list) {
-				writer.println(line);
-			}
-		} finally {
-			writer.close();
-		}
+	public static void writeListToFile(List<String> list, PrintWriter writer) {
+		for (String line : list) {
+            writer.println(line);
+        }
 	}
 }

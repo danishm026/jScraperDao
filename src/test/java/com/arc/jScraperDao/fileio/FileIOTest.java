@@ -22,28 +22,28 @@ public class FileIOTest {
 	private Iterator<String> iterator;
 	
 	@Test
-	public void writeListtoFileTest() {
+	public void writeListToFileTest() {
 		PrintWriter writer = mock(PrintWriter.class);
-		
+
 		when(list.iterator()).thenReturn(iterator);
 		when(iterator.hasNext())
 		.thenReturn(true)
 		.thenReturn(true)
 		.thenReturn(true)
 		.thenReturn(false);
-		
+
 		when(iterator.next())
 		.thenReturn("first")
 		.thenReturn("second")
 		.thenReturn("third");
-		
-		FileIO.writeListtoFile(list, writer);
-		
+
+		FileIO.writeListToFile(list, writer);
+
 		verify(list).iterator();
-		
+
 		verify(iterator, times(4)).hasNext();
 		verify(iterator, times(3)).next();
-		
+
 		verify(writer).println("first");
 		verify(writer).println("second");
 		verify(writer).println("third");
