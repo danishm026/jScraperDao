@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ImageData {
     private String thumbnailUrl;
+    private String imagePageURL;
     private String imageUrl;
 }

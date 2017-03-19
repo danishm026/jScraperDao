@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModelPage {
+    private String modelPageURL;
     private int pageNumber;
     private int startingImageNumber;
     private int lastImageNumber;
