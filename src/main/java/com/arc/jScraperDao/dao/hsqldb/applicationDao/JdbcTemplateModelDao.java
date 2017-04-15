@@ -10,6 +10,7 @@ import com.arc.jScraperDao.dto.hsqldb.ImageDetails;
 import com.arc.jScraperDao.dto.hsqldb.ModelDetails;
 import com.arc.jScraperDao.dto.hsqldb.ModelPageDetails;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,6 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by danish on 19/11/16.
- */
 @Repository
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class JdbcTemplateModelDao implements ModelDao {
@@ -31,9 +29,11 @@ public class JdbcTemplateModelDao implements ModelDao {
 
     @Override
     public void save(Model model) {
-        modelDetailsDao.save(translator.getDBModelDetails(model));
-        modelPageDetailsDao.save(translator.getDBModelPages(model));
-        imageDetailsDao.save(translator.getDBImageDetails(model));
+        if (isValidModel(model) && null == load(model.getName())) {
+            modelDetailsDao.save(translator.getDBModelDetails(model));
+            modelPageDetailsDao.save(translator.getDBModelPages(model));
+            imageDetailsDao.save(translator.getDBImageDetails(model));
+        }
     }
 
     @Override
@@ -42,5 +42,15 @@ public class JdbcTemplateModelDao implements ModelDao {
         List<ModelPageDetails> modelPageDetailsList = modelPageDetailsDao.load(name);
         List<ImageDetails> imageDetailsList = imageDetailsDao.load(name);
         return translator.transformToAppModel(modelDetails, modelPageDetailsList, imageDetailsList);
+    }
+
+    private boolean isValidModel(@NonNull final Model model) {
+        return !(null == model
+                || null == model.getName()
+                || null == model.getBaseUrl()
+                || 0 == model.getNumberOfPages()
+                || 0 == model.getNumberOfImages()
+                || null == model.getModelPages()
+                );
     }
 }

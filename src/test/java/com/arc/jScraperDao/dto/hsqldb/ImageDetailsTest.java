@@ -30,14 +30,14 @@ public class ImageDetailsTest {
     @Test
     public void getAndSetThumbnailUrlTest() {
         ImageDetails imageDetails = new ImageDetails();
-        imageDetails.setThumbnailUrl(THUMBNAIL_URL);
-        assertEquals(THUMBNAIL_URL, imageDetails.getThumbnailUrl());
+        imageDetails.setThumbnailURL(THUMBNAIL_URL);
+        assertEquals(THUMBNAIL_URL, imageDetails.getThumbnailURL());
     }
 
     @Test
     public void getAndSetImageUrlTest() {
         ImageDetails imageDetails = new ImageDetails();
-        imageDetails.setImageUrl(IMAGE_URL);
-        assertEquals(IMAGE_URL, imageDetails.getImageUrl());
+        imageDetails.setImageURL(IMAGE_URL);
+        assertEquals(IMAGE_URL, imageDetails.getImageURL());
     }
 }

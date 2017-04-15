@@ -48,9 +48,9 @@ public class JdbcTemplateModelDaoTest {
     public void saveTest() {
         jdbcTemplateModelDao.save(new Model());
 
-        verify(modelDetailsDao).save(any(ModelDetails.class));
-        verify(modelPageDetailsDao).save(any(List.class));
-        verify(imageDetailsDao).save(any(List.class));
+        verify(modelDetailsDao, never()).save(any(ModelDetails.class));
+        verify(modelPageDetailsDao, never()).save(any(List.class));
+        verify(imageDetailsDao, never()).save(any(List.class));
     }
 
     @Test

@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class ModelPageDetails {
     private String name;
+    private String modelPageURL;
     private int pageNumber;
     private int startingImageNumber;
     private int lastImageNumber;

@@ -9,20 +9,19 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by danish on 4/11/16.
- */
 @Repository
 public class ModelPageDetailsDao {
     @Getter
     @Setter(onMethod = @__({@Resource}))
     private JdbcTemplate jdbcTemplate;
 
+    @PostConstruct
     public void createTable() {
         jdbcTemplate.update(ModelPageDetailsTableQueries.CREATE_TABLE_QUERY);
     }
@@ -33,9 +32,10 @@ public class ModelPageDetailsDao {
             public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
                 ModelPageDetails modelPageDetails = modelPageDetailsList.get(i);
                 preparedStatement.setString(1, modelPageDetails.getName());
-                preparedStatement.setInt(2, modelPageDetails.getPageNumber());
-                preparedStatement.setInt(3, modelPageDetails.getStartingImageNumber());
-                preparedStatement.setInt(4, modelPageDetails.getLastImageNumber());
+                preparedStatement.setString(2, modelPageDetails.getModelPageURL());
+                preparedStatement.setInt(3, modelPageDetails.getPageNumber());
+                preparedStatement.setInt(4, modelPageDetails.getStartingImageNumber());
+                preparedStatement.setInt(5, modelPageDetails.getLastImageNumber());
             }
 
             @Override

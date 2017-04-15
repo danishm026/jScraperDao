@@ -9,4 +9,8 @@ public class FileIO {
             writer.println(line);
         }
 	}
+
+	public static void writeToFile(String string, PrintWriter writer) {
+			writer.println(string);
+	}
 }

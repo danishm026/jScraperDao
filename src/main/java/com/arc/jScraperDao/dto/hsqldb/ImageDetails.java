@@ -9,6 +9,7 @@ import lombok.Data;
 public class ImageDetails {
     private String name;
     private int pageNumber;
-    private String thumbnailUrl;
-    private String imageUrl;
+    private String thumbnailURL;
+    private String imagePageURL;
+    private String imageURL;
 }

@@ -21,9 +21,7 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
-/**
- * Created by danish on 5/2/17.
- */
+
 @RunWith(MockitoJUnitRunner.class)
 public class ImageDetailsDaoTest {
     @Mock
@@ -34,7 +32,8 @@ public class ImageDetailsDaoTest {
     public void setUp() {
         doReturn(new int[] {1}).when(jdbcTemplate).batchUpdate(anyString(), any(BatchPreparedStatementSetter.class));
         doReturn(new ArrayList<>()).when(jdbcTemplate).query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class));
-        imageDetailsDao = new ImageDetailsDao(jdbcTemplate);
+        imageDetailsDao = new ImageDetailsDao();
+        imageDetailsDao.setJdbcTemplate(jdbcTemplate);
     }
 
     @Test

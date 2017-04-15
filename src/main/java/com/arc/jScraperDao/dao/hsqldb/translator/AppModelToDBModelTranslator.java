@@ -29,6 +29,7 @@ public class AppModelToDBModelTranslator {
         for (ModelPage modelPage : model.getModelPages()) {
             ModelPageDetails modelPageDetails = new ModelPageDetails();
             modelPageDetails.setName(model.getName());
+            modelPageDetails.setModelPageURL(modelPage.getModelPageURL());
             modelPageDetails.setPageNumber(modelPage.getPageNumber());
             modelPageDetails.setStartingImageNumber(modelPage.getStartingImageNumber());
             modelPageDetails.setLastImageNumber(modelPage.getLastImageNumber());
@@ -44,8 +45,9 @@ public class AppModelToDBModelTranslator {
                 ImageDetails imageDetails = new ImageDetails();
                 imageDetails.setName(model.getName());
                 imageDetails.setPageNumber(modelPage.getPageNumber());
-                imageDetails.setThumbnailUrl(imageData.getThumbnailUrl());
-                imageDetails.setImageUrl(imageData.getImageUrl());
+                imageDetails.setThumbnailURL(imageData.getThumbnailUrl());
+                imageDetails.setImagePageURL(imageData.getImagePageURL());
+                imageDetails.setImageURL(imageData.getImageUrl());
                 imageDetailsList.add(imageDetails);
             }
         }
@@ -53,6 +55,9 @@ public class AppModelToDBModelTranslator {
     }
 
     public Model transformToAppModel(ModelDetails modelDetails, List<ModelPageDetails> modelPageDetailsList, List<ImageDetails> imageDetailsList) {
+        if (null == modelDetails) {
+            return null;
+        }
         Model model = new Model();
         setModelDetails(model, modelDetails);
         setModelPages(model, modelPageDetailsList, imageDetailsList);
@@ -71,6 +76,7 @@ public class AppModelToDBModelTranslator {
         Map<Integer, List<ImageData>> imageDataMap = getImageDetailsMap(imageDetailsList);
         for (ModelPageDetails modelPageDetails : modelPageDetailsList) {
             ModelPage modelPage = new ModelPage();
+            modelPage.setModelPageURL(modelPageDetails.getModelPageURL());
             modelPage.setPageNumber(modelPageDetails.getPageNumber());
             modelPage.setStartingImageNumber(modelPageDetails.getStartingImageNumber());
             modelPage.setLastImageNumber(modelPageDetails.getLastImageNumber());
@@ -97,8 +103,9 @@ public class AppModelToDBModelTranslator {
 
     private ImageData transformToImageData(ImageDetails imageDetails) {
         ImageData imageData = new ImageData();
-        imageData.setThumbnailUrl(imageDetails.getThumbnailUrl());
-        imageData.setImageUrl(imageDetails.getImageUrl());
+        imageData.setThumbnailUrl(imageDetails.getThumbnailURL());
+        imageData.setImagePageURL(imageDetails.getImagePageURL());
+        imageData.setImageUrl(imageDetails.getImageURL());
         return imageData;
     }
 }
