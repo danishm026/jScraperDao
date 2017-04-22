@@ -1,10 +1,8 @@
 package com.arc.jScraperDao.dao.hsqldb.dbDao;
 
 import com.arc.jScraperDao.dao.hsqldb.queries.ImageDetailsTableQueries;
-import com.arc.jScraperDao.dto.hsqldb.ImageDetails;
-import lombok.AllArgsConstructor;
+import com.arc.jScraperDao.dto.db.ImageDetails;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -13,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.arc.jScraperDao.dao.hsqldb.dbDao;
 
-import com.arc.jScraperDao.dto.hsqldb.ModelPageDetails;
+import com.arc.jScraperDao.dto.db.ModelPageDetails;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

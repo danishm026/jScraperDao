@@ -6,17 +6,14 @@ import com.arc.jScraperDao.dao.hsqldb.dbDao.ModelDetailsDao;
 import com.arc.jScraperDao.dao.hsqldb.dbDao.ModelPageDetailsDao;
 import com.arc.jScraperDao.dao.hsqldb.translator.AppModelToDBModelTranslator;
 import com.arc.jScraperDao.dto.application.Model;
-import com.arc.jScraperDao.dto.hsqldb.ImageDetails;
-import com.arc.jScraperDao.dto.hsqldb.ModelDetails;
-import com.arc.jScraperDao.dto.hsqldb.ModelPageDetails;
-import lombok.Getter;
+import com.arc.jScraperDao.dto.db.ImageDetails;
+import com.arc.jScraperDao.dto.db.ModelDetails;
+import com.arc.jScraperDao.dto.db.ModelPageDetails;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Repository

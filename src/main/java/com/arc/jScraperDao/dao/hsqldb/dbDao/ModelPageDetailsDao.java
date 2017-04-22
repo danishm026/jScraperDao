@@ -1,7 +1,7 @@
 package com.arc.jScraperDao.dao.hsqldb.dbDao;
 
 import com.arc.jScraperDao.dao.hsqldb.queries.ModelPageDetailsTableQueries;
-import com.arc.jScraperDao.dto.hsqldb.ModelPageDetails;
+import com.arc.jScraperDao.dto.db.ModelPageDetails;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;

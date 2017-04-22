@@ -1,4 +1,4 @@
-package com.arc.jScraperDao.dto.hsqldb;
+package com.arc.jScraperDao.dto.db;
 
 import lombok.Data;
 

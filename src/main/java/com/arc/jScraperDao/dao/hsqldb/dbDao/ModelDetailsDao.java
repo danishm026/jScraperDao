@@ -1,8 +1,7 @@
 package com.arc.jScraperDao.dao.hsqldb.dbDao;
 
 import com.arc.jScraperDao.dao.hsqldb.queries.ModelDetailsTableQueries;
-import com.arc.jScraperDao.dto.application.Model;
-import com.arc.jScraperDao.dto.hsqldb.ModelDetails;
+import com.arc.jScraperDao.dto.db.ModelDetails;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

@@ -3,9 +3,9 @@ package com.arc.jScraperDao.dao.hsqldb.translator;
 import com.arc.jScraperDao.dto.application.ImageData;
 import com.arc.jScraperDao.dto.application.Model;
 import com.arc.jScraperDao.dto.application.ModelPage;
-import com.arc.jScraperDao.dto.hsqldb.ImageDetails;
-import com.arc.jScraperDao.dto.hsqldb.ModelDetails;
-import com.arc.jScraperDao.dto.hsqldb.ModelPageDetails;
+import com.arc.jScraperDao.dto.db.ImageDetails;
+import com.arc.jScraperDao.dto.db.ModelDetails;
+import com.arc.jScraperDao.dto.db.ModelPageDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

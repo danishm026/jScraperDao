@@ -1,7 +1,7 @@
 package com.arc.jScraperDao.dao.hsqldb.dbDao;
 
 import com.arc.jScraperDao.dao.hsqldb.queries.ImageDetailsTableQueries;
-import com.arc.jScraperDao.dto.hsqldb.ImageDetails;
+import com.arc.jScraperDao.dto.db.ImageDetails;
 import com.arc.jScraperDao.util.TestConstants;
 import org.junit.Before;
 import org.junit.Test;

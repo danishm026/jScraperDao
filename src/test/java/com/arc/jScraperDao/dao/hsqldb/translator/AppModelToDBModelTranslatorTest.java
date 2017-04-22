@@ -1,19 +1,11 @@
 package com.arc.jScraperDao.dao.hsqldb.translator;
 
 import com.arc.jScraperDao.dto.application.ImageData;
-import com.arc.jScraperDao.dto.application.Model;
 import com.arc.jScraperDao.dto.application.ModelPage;
-import com.arc.jScraperDao.dto.hsqldb.ImageDetails;
-import com.arc.jScraperDao.dto.hsqldb.ModelDetails;
-import com.arc.jScraperDao.dto.hsqldb.ModelPageDetails;
-import com.arc.jScraperDao.util.TestConstants;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

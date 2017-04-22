@@ -5,7 +5,7 @@ import com.arc.jScraperDao.dao.hsqldb.dbDao.ModelDetailsDao;
 import com.arc.jScraperDao.dao.hsqldb.dbDao.ModelPageDetailsDao;
 import com.arc.jScraperDao.dao.hsqldb.translator.AppModelToDBModelTranslator;
 import com.arc.jScraperDao.dto.application.Model;
-import com.arc.jScraperDao.dto.hsqldb.ModelDetails;
+import com.arc.jScraperDao.dto.db.ModelDetails;
 import com.arc.jScraperDao.util.TestConstants;
 import org.junit.Before;
 import org.junit.Test;
