@@ -15,9 +15,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by danish on 19/11/16.
- */
 @Repository
 public class ImageDetailsDao {
     @Getter

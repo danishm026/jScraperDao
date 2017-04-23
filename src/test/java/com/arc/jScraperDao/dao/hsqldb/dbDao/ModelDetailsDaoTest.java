@@ -11,9 +11,6 @@ import javax.annotation.Resource;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by danish on 4/11/16.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:jdbcModelDaoTestConfig.xml")
 public class ModelDetailsDaoTest {
