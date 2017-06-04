@@ -3,7 +3,6 @@ package com.arc.jScraperDao.dao.hsqldb.dbDao;
 import com.arc.jScraperDao.dao.hsqldb.queries.ErrorModelPageTableQueries;
 import com.arc.jScraperDao.dto.db.ErrorModelPage;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -27,7 +26,7 @@ public class ErrorModelPageDao {
         jdbcTemplate.batchUpdate(ErrorModelPageTableQueries.CREATE_TABLE_QUERY);
     }
 
-    public void save(@NonNull final List<ErrorModelPage> errorModelPages) {
+    public void save(final List<ErrorModelPage> errorModelPages) {
         if (null != errorModelPages && !errorModelPages.isEmpty()) {
             jdbcTemplate.batchUpdate(ErrorModelPageTableQueries.INSERT_QUERY, new BatchPreparedStatementSetter() {
                 @Override
@@ -46,7 +45,21 @@ public class ErrorModelPageDao {
         }
     }
 
-    public List<ErrorModelPage> load (@NonNull final String name) {
+    public List<ErrorModelPage> load (final String name) {
         return jdbcTemplate.query(ErrorModelPageTableQueries.QUERY_MODEL_PAGES_BY_NAME, new Object[] {name}, new BeanPropertyRowMapper<>(ErrorModelPage.class));
+    }
+
+    public void deleteByModelPageURL(final List<String> modelPageURLList) {
+        jdbcTemplate.batchUpdate(ErrorModelPageTableQueries.DELETE_BY_MODEL_PAGE_URL, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                preparedStatement.setString(1, modelPageURLList.get(i));
+            }
+
+            @Override
+            public int getBatchSize() {
+                return modelPageURLList.size();
+            }
+        });
     }
 }

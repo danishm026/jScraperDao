@@ -41,6 +41,14 @@ public class JdbcTemplateModelDao implements ModelDao {
         return translator.transformToAppModel(modelDetails, modelPageDetailsList, imageDetailsList);
     }
 
+    public void merge(final Model model) {
+        if (isValidModel(model)) {
+            modelDetailsDao.merge(translator.getDBModelDetails(model));
+            modelPageDetailsDao.merge(translator.getDBModelPages(model));
+            imageDetailsDao.merge(translator.getDBImageDetails(model));
+        }
+    }
+
     private boolean isValidModel(@NonNull final Model model) {
         return !(null == model
                 || null == model.getName()

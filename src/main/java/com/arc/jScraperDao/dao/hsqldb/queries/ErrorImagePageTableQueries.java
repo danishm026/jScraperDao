@@ -12,4 +12,6 @@ public class ErrorImagePageTableQueries {
             "(name, pageNumber, modelPageURL, imagePageURL) VALUES (?, ?, ?, ?);";
 
     public static final String QUERY_IMAGE_DETAILS_BY_NAME = "SELECT * FROM ERROR_IMAGE_PAGE WHERE name=?";
+
+    public static final String DELETE_BY_IMAGE_PAGE_URL = "DELETE FROM ERROR_IMAGE_PAGE WHERE imagePageURL = ?";
 }

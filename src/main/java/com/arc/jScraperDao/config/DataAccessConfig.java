@@ -1,5 +1,9 @@
 package com.arc.jScraperDao.config;
 
+import com.arc.jScraperDao.dao.hsqldb.applicationDao.JdbcTemplateModelDao;
+import com.arc.jScraperDao.dao.hsqldb.applicationDao.ScraperModelDao;
+import com.arc.jScraperDao.dao.hsqldb.dbDao.ErrorImagePageDao;
+import com.arc.jScraperDao.dao.hsqldb.dbDao.ErrorModelPageDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,5 +29,11 @@ public class DataAccessConfig {
     @Resource
     public JdbcTemplate jdbcTemplate(final DriverManagerDataSource hsqldbDataSource) {
         return new JdbcTemplate(hsqldbDataSource);
+    }
+
+    @Bean
+    @Resource
+    public ScraperModelDao scraperModelDao(final JdbcTemplateModelDao jdbcTemplateModelDao, final ErrorModelPageDao errorModelPageDao, final ErrorImagePageDao errorImagePageDao) {
+        return new ScraperModelDao(jdbcTemplateModelDao, errorModelPageDao, errorImagePageDao);
     }
 }

@@ -23,13 +23,18 @@ public class ModelDetailsDao {
         jdbcTemplate.update(ModelDetailsTableQueries.CREATE_TABLE_QUERY);
     }
 
-    public void save(ModelDetails modelDetails) {
+    public void save(final ModelDetails modelDetails) {
         jdbcTemplate.update(ModelDetailsTableQueries.INSERT_INTO_MODEL_DETAILS,
                 modelDetails.getName(), modelDetails.getBaseUrl(), modelDetails.getNumberOfPages(), modelDetails.getNumberOfImages());
     }
 
-    public ModelDetails load(String name) {
+    public ModelDetails load(final String name) {
         List<ModelDetails> modelDetailsList = jdbcTemplate.query(ModelDetailsTableQueries.QUERY_BY_NAME, new Object[] {name}, new BeanPropertyRowMapper<>(ModelDetails.class));
         return modelDetailsList.isEmpty() ? null : modelDetailsList.get(0);
+    }
+
+    public void merge(final ModelDetails modelDetails) {
+        jdbcTemplate.update(ModelDetailsTableQueries.MERGE_INTO_MODEL_DETAILS,
+                modelDetails.getName(), modelDetails.getBaseUrl(), modelDetails.getNumberOfPages(), modelDetails.getNumberOfImages());
     }
 }

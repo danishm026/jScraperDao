@@ -12,4 +12,6 @@ public class ErrorModelPageTableQueries {
 
     public static final String QUERY_MODEL_PAGES_BY_NAME = "SELECT * FROM ERROR_MODEL_PAGE " +
             "WHERE name=?;";
+
+    public static final String DELETE_BY_MODEL_PAGE_URL = "DELETE FROM ERROR_MODEL_PAGE WHERE modelPageURL = ?";
 }

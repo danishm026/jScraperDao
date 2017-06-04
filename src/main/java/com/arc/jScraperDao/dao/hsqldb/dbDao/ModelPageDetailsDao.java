@@ -26,16 +26,11 @@ public class ModelPageDetailsDao {
         jdbcTemplate.update(ModelPageDetailsTableQueries.CREATE_TABLE_QUERY);
     }
 
-    public void save(List<ModelPageDetails> modelPageDetailsList) {
+    public void save(final List<ModelPageDetails> modelPageDetailsList) {
         jdbcTemplate.batchUpdate(ModelPageDetailsTableQueries.INSERT_QUERY, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
-                ModelPageDetails modelPageDetails = modelPageDetailsList.get(i);
-                preparedStatement.setString(1, modelPageDetails.getName());
-                preparedStatement.setString(2, modelPageDetails.getModelPageURL());
-                preparedStatement.setInt(3, modelPageDetails.getPageNumber());
-                preparedStatement.setInt(4, modelPageDetails.getStartingImageNumber());
-                preparedStatement.setInt(5, modelPageDetails.getLastImageNumber());
+                setPreparedStatement(preparedStatement, modelPageDetailsList.get(i));
             }
 
             @Override
@@ -45,8 +40,29 @@ public class ModelPageDetailsDao {
         });
     }
 
-    public List<ModelPageDetails> load(String name) {
-        List<ModelPageDetails> modelPageDetailsList = jdbcTemplate.query(ModelPageDetailsTableQueries.QUERY_MODEL_PAGES_BY_NAME, new Object[]{name}, new BeanPropertyRowMapper<>(ModelPageDetails.class));
-        return modelPageDetailsList;
+    public List<ModelPageDetails> load(final String name) {
+        return jdbcTemplate.query(ModelPageDetailsTableQueries.QUERY_MODEL_PAGES_BY_NAME, new Object[]{name}, new BeanPropertyRowMapper<>(ModelPageDetails.class));
+    }
+
+    public void merge(final List<ModelPageDetails> modelPageDetailsList) {
+        jdbcTemplate.batchUpdate(ModelPageDetailsTableQueries.MERGE_INTO_MAODEL_PAGE_DETAILS, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                setPreparedStatement(preparedStatement, modelPageDetailsList.get(i));
+            }
+
+            @Override
+            public int getBatchSize() {
+                return  modelPageDetailsList.size();
+            }
+        });
+    }
+
+    private void setPreparedStatement(final PreparedStatement preparedStatement, final ModelPageDetails modelPageDetails) throws SQLException {
+        preparedStatement.setString(1, modelPageDetails.getName());
+        preparedStatement.setString(2, modelPageDetails.getModelPageURL());
+        preparedStatement.setInt(3, modelPageDetails.getPageNumber());
+        preparedStatement.setInt(4, modelPageDetails.getStartingImageNumber());
+        preparedStatement.setInt(5, modelPageDetails.getLastImageNumber());
     }
 }

@@ -1,9 +1,7 @@
 package com.arc.jScraperDao.dao.hsqldb.dbDao;
 
 import com.arc.jScraperDao.dao.hsqldb.queries.ErrorImagePageTableQueries;
-import com.arc.jScraperDao.dao.hsqldb.queries.ErrorModelPageTableQueries;
 import com.arc.jScraperDao.dto.db.ErrorImagePage;
-import com.arc.jScraperDao.dto.db.ErrorModelPage;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -51,5 +49,19 @@ public class ErrorImagePageDao {
 
     public List<ErrorImagePage> load (@NonNull final String name) {
         return jdbcTemplate.query(ErrorImagePageTableQueries.QUERY_IMAGE_DETAILS_BY_NAME, new Object[] {name}, new BeanPropertyRowMapper<>(ErrorImagePage.class));
+    }
+
+    public void deletByImagePageURL(final List<String> imagePageURLList) {
+        jdbcTemplate.batchUpdate(ErrorImagePageTableQueries.DELETE_BY_IMAGE_PAGE_URL, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                preparedStatement.setString(1, imagePageURLList.get(i));
+            }
+
+            @Override
+            public int getBatchSize() {
+                return imagePageURLList.size();
+            }
+        });
     }
 }
